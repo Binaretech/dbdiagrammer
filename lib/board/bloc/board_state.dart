@@ -1,8 +1,7 @@
 part of 'board_bloc.dart';
 
-class BoardState extends Equatable {
-  const BoardState();
+class BoardState {
+  final Map<String, models.Table> tables;
 
-  @override
-  List<Object> get props => [];
+  const BoardState(this.tables);
 }

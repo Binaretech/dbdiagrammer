@@ -31,7 +31,7 @@ class Table extends Equatable {
         this.height = ((fields ?? table.fields).length + 1) * 22.0;
 
   @override
-  List<Object> get props => [name, position];
+  List<Object> get props => [name];
 }
 
 class Field extends Equatable {
