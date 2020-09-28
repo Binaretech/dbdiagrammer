@@ -7,7 +7,7 @@ part 'board_event.dart';
 part 'board_state.dart';
 
 class BoardBloc extends Bloc<BoardEvent, BoardState> {
-  BoardBloc() : super(BoardInitial());
+  BoardBloc() : super(BoardState());
 
   @override
   Stream<BoardState> mapEventToState(

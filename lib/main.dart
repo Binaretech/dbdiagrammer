@@ -1,3 +1,4 @@
+import 'package:dbdiagrammer/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,6 +26,9 @@ class App extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      initialRoute: '/',
+      onGenerateRoute: routeResolver,
+      onUnknownRoute: notFoundRoute,
     );
   }
 }
