@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dbdiagrammer/models/db_models.dart' as models;
+import 'package:dbdiagrammer/models/db_types.dart' as dbtypes;
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
