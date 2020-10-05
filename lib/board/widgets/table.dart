@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 
 class Table extends StatelessWidget {
   final db.Table table;
-  final Function(Velocity, Offset) onDraggableCanceled;
+  final Function(DragUpdateDetails) onDrag;
+  final Function(DragEndDetails) onDragCancel;
 
-  Table({this.table, this.onDraggableCanceled});
+  Table({this.table, this.onDrag, this.onDragCancel});
 
   Widget title(BuildContext context) {
     return Expanded(
@@ -73,19 +74,16 @@ class Table extends StatelessWidget {
   }
 
   Widget buildTable(BuildContext context) {
-    return GestureDetector(
-      // onTap: () => onTap(context),
-      child: Card(
-        elevation: 3.0,
-        child: Container(
-          // width: table.width,
-          height: table.height,
-          child: Column(
-            children: [
-              title(context),
-              ...fields(context),
-            ],
-          ),
+    return Card(
+      elevation: 3.0,
+      child: Container(
+        // width: table.width,
+        height: table.height,
+        child: Column(
+          children: [
+            title(context),
+            ...fields(context),
+          ],
         ),
       ),
     );
@@ -96,15 +94,10 @@ class Table extends StatelessWidget {
     return Positioned(
       left: table.position.dx,
       top: table.position.dy - table.height + 20,
-      child: Draggable(
-        affinity: Axis.horizontal,
-        childWhenDragging: Container(),
+      child: GestureDetector(
+        onHorizontalDragUpdate: onDrag,
+        onVerticalDragUpdate: onDrag,
         child: buildTable(context),
-        feedback: Transform(
-          child: buildTable(context),
-          transform: Matrix4.rotationZ(-0.1),
-        ),
-        onDraggableCanceled: onDraggableCanceled,
       ),
     );
   }
